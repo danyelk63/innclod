@@ -1,0 +1,11 @@
+.content {
+    display: flex;
+    
+    .sidebar {
+        width: 250px;
+    }
+
+    .template {
+        flex: 1;
+    }
+}
