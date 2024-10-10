@@ -1,0 +1,27 @@
+<h5>Tareas</h5>
+<div class="principal">
+    @for (task of tasks; track task.title){
+    <div class="card">
+        <mat-card appearance="outlined">
+            <button mat-icon-button class="icon-edit" matTooltip="Editar tarea">
+                <mat-icon color="primary">edit</mat-icon>
+            </button>
+            <button mat-icon-button class="icon-delete" matTooltip="Borrar tarea" (click)="delete(task.title)">
+                <mat-icon color="warn">delete</mat-icon>
+            </button>
+            <mat-card-header>
+                <div class="title">
+                    <b>{{task.title}}</b>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="body">
+                    <p><b>ID:</b> {{task.id}}</p>
+                    <p [ngClass]="{'custom-warn-text': !task.completed, 'custom-primary-text': task.completed}">
+                        {{task.completed ? 'COMPLETED' : 'INCOMPLETED'}}</p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    }
+</div>

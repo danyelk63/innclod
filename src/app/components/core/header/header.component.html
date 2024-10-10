@@ -1,19 +1,12 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <button mat-icon-button aria-label="Menu icon">
-          <mat-icon>menu</mat-icon>
-        </button>
         <img src="innclod-banner.png" alt="Banner de Innclod">
         <span class="spacer"></span>
         <button mat-icon-button class="avatar-button" [matMenuTriggerFor]="userMenu">
-            <ngx-avatars size="40" value="SL"> </ngx-avatars>
+            <ngx-avatars size="40" [value]="initials"> </ngx-avatars>
         </button>
         <mat-menu #userMenu="matMenu">
-            <!--<button mat-menu-item>
-                <mat-icon>settings_applications</mat-icon>
-                <span>Settings</span>
-            </button>-->
-            <button mat-menu-item>
+            <button mat-menu-item (click)="logout()">
                 <mat-icon color="warn">exit_to_app</mat-icon>
                 <span>Logout</span>
             </button>
