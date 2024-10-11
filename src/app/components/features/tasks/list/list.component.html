@@ -6,7 +6,7 @@
             <button mat-icon-button class="icon-edit" matTooltip="Editar tarea">
                 <mat-icon color="primary">edit</mat-icon>
             </button>
-            <button mat-icon-button class="icon-delete" matTooltip="Borrar tarea" (click)="delete(task.title)">
+            <button mat-icon-button class="icon-delete" matTooltip="Borrar tarea" (click)="delete(task.title, task.id); $event.stopPropagation()">
                 <mat-icon color="warn">delete</mat-icon>
             </button>
             <mat-card-header>

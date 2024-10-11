@@ -3,6 +3,12 @@
     @for (project of projects; track project.name){
         <div class="card">
             <mat-card appearance="outlined" (click)="selectProject(project.id)">
+                <button mat-icon-button class="icon-edit" matTooltip="Editar projecto">
+                    <mat-icon color="primary">edit</mat-icon>
+                </button>
+                <button mat-icon-button class="icon-delete" matTooltip="Borrar projecto" (click)="delete(project.name, project.id); $event.stopPropagation()">
+                    <mat-icon color="warn">delete</mat-icon>
+                </button>
                 <mat-card-header>
                     <div class="title">
                         <b>{{project.name}}</b>

@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TasksService } from '@httpServices';
-import { ITask } from '@models';
+import { ITask, UUID } from '@models';
 import { DeleteDialogComponent } from '@components';
 
 @Component({
@@ -41,17 +41,24 @@ export class TasksListComponent {
     })
   }
 
-  delete(title: string) {
-
-    console.log("asdf")
+  delete(title: string, id: UUID) {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
-      data: {name: title}
+      data: { name: title }
     });
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
-      console.log(result)
-      if(result) {
-        alert("delete");
+      if (result) {
+        this.tasksService.delete(id).subscribe({
+          next: (response: ITask) => {
+            this.snackBar.open(`Eliminado ${response.title} con éxito`, "OK");
+          },
+          error: (error) => {
+            console.error(error);
+            this.snackBar.open(JSON.stringify(error), "OK", {
+              duration: 3000
+            });
+          }
+        });
       }
     })
   }
