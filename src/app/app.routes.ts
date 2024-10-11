@@ -6,10 +6,10 @@ import { AuthGuard } from './guards/auth.guard';
 export const routes: Routes = [
     {path: '', redirectTo: 'projects', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
-    {path: 'projects', component: ProjectListComponent, canActivate: [AuthGuard]},
-    {path: 'projects/:id', component: ProjectFormComponent, canActivate: [AuthGuard]},
-    {path: 'projects/new', component: ProjectFormComponent, canActivate: [AuthGuard]},
-    {path: 'projects/:id/tasks', component: TasksListComponent, canActivate: [AuthGuard]},
-    {path: 'tasks/:id', component: TaskFormComponent, canActivate: [AuthGuard]},
-    {path: 'tasks/:id', component: TaskFormComponent, canActivate: [AuthGuard]},
+    {path: 'projects', loadComponent: () => import("@components").then((m) => m.ProjectListComponent), canActivate: [AuthGuard]},
+    {path: 'projects/:id', loadComponent: () => import("@components").then((m) => m.ProjectFormComponent), canActivate: [AuthGuard]},
+    {path: 'projects/new', loadComponent: () => import("@components").then((m) => m.ProjectFormComponent), canActivate: [AuthGuard]},
+    {path: 'projects/:id/tasks', loadComponent: () => import("@components").then((m) => m.TasksListComponent), canActivate: [AuthGuard]},
+    {path: 'tasks/:id', loadComponent: () => import("@components").then((m) => m.TaskFormComponent), canActivate: [AuthGuard]},
+    {path: 'tasks/:id', loadComponent: () => import("@components").then((m) => m.TaskFormComponent), canActivate: [AuthGuard]},
 ];

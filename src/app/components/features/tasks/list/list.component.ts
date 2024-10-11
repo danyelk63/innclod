@@ -30,7 +30,6 @@ export class TasksListComponent {
     this.tasksService.get(this.route.snapshot.params['id']).subscribe({
       next: (response: ITask[]) => {
         this.tasks = response;
-        console.log(this.tasks)
       },
       error: (error) => {
         console.error(error);

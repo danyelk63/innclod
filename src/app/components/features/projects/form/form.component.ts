@@ -31,7 +31,6 @@ export class ProjectFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("asdf")
     let id = this.route.snapshot.params['id'];
     if (id !== "new") {
       this.projectsService.getOne(id).subscribe({

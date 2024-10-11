@@ -29,7 +29,6 @@ export class ProjectListComponent implements OnInit {
     this.projectsService.get().subscribe({
       next: (response: IProject[]) => {
         this.projects = response;
-        console.log(this.projects)
       },
       error: (error) => {
         console.error(error);

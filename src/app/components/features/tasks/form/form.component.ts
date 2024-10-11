@@ -32,7 +32,6 @@ export class TaskFormComponent {
   }
 
   ngOnInit(): void {
-    console.log("asdf")
     let id = this.route.snapshot.params['id'];
     if (id !== "new") {
       this.tasksService.getOne(id).subscribe({
