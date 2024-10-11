@@ -1,0 +1,31 @@
+<div class="col-10 col-md-4 mx-auto main">
+    <mat-card appearance="outlined">
+        <mat-card-header>
+            <div class="title">
+                @if(task) {
+                    <h5>Editar</h5>
+                } @else {
+                    <h5>Crear</h5>
+                }
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="content">
+                    <mat-form-field>
+                        <mat-label>Título</mat-label>
+                        <input matInput fullWidth type="text" formControlName="title">
+                    </mat-form-field>
+                    <mat-checkbox formControlName="completed">Completed</mat-checkbox>
+                </div>
+                <div class="success-button">
+                    @if(task) {
+                        <button mat-button [disabled]="form.invalid">Editar</button>
+                    } @else {
+                        <button mat-button [disabled]="form.invalid">Crear</button>
+                    }
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

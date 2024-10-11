@@ -12,14 +12,20 @@ export class TasksService {
   }
   constructor(private httpClient: HttpClient, private endpointService: EndpointService) {}
 
-  get(projectId: string, id?: string) {
+  get(projectId: string) {
     let url = this.endpointService.getEndpointUrl(this.data.url);
-    if(id) {
-      url += `/${id}`;
-    } else {
+    if(projectId) {
       url += `?userId=${projectId}`;
     }
     return this.httpClient.get<ITask[]>(url);
+  }
+
+  getOne(id: string) {
+    let url = this.endpointService.getEndpointUrl(this.data.url);
+    if(id) {
+      url += `/${id}`;
+    }
+    return this.httpClient.get<ITask>(url);
   }
 
   post(data: ITask) {

@@ -63,4 +63,12 @@ export class TasksListComponent {
     })
   }
 
+  create() {
+    this.router.navigate(["/tasks/new"]);
+  }
+
+  edit(id: UUID) {
+    this.router.navigate([`/tasks/${id}`]);
+  }
+
 }

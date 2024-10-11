@@ -46,7 +46,7 @@ export class ProjectListComponent implements OnInit {
 
   selectProject(id: UUID) {
     if(id) {
-      this.router.navigate([`/projects/${id}/tasks`])
+      this.router.navigate([`/projects/${id}/tasks`]);
     }
   }
 
@@ -70,5 +70,13 @@ export class ProjectListComponent implements OnInit {
         });
       }
     })
+  }
+
+  create() {
+    this.router.navigate(["/projects/new"]);
+  }
+
+  edit(id: UUID) {
+    this.router.navigate([`/projects/${id}`]);
   }
 }

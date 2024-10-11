@@ -12,12 +12,12 @@ export class ProjectsService {
   }
   constructor(private httpClient: HttpClient, private endpointService: EndpointService) {}
 
-  get(id?: string) {
-    let url = this.endpointService.getEndpointUrl(this.data.url);
-    if(id) {
-      url += `/${id}`;
-    }
-    return this.httpClient.get<IProject[]>(url);
+  get() {
+    return this.httpClient.get<IProject[]>(this.endpointService.getEndpointUrl(this.data.url));
+  }
+
+  getOne(id: string) {
+    return this.httpClient.get<IProject>(this.endpointService.getEndpointUrl(this.data.url) + `/${id}`);
   }
 
   post(data: IProject) {

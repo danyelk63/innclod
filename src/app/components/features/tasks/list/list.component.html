@@ -1,9 +1,13 @@
-<h5>Tareas</h5>
+
+<div class="spacer">
+    <h5>Tareas</h5>
+    <button mat-button (click)="create()">Nuevo</button>
+</div>
 <div class="principal">
     @for (task of tasks; track task.title){
     <div class="card">
         <mat-card appearance="outlined">
-            <button mat-icon-button class="icon-edit" matTooltip="Editar tarea">
+            <button mat-icon-button class="icon-edit" matTooltip="Editar tarea" (click)="edit(task.id); $event.stopPropagation()">
                 <mat-icon color="primary">edit</mat-icon>
             </button>
             <button mat-icon-button class="icon-delete" matTooltip="Borrar tarea" (click)="delete(task.title, task.id); $event.stopPropagation()">
